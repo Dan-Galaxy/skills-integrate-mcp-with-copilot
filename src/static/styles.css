@@ -1,3 +1,57 @@
+:root {
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9f9f9;
+  --color-text: #333;
+  --color-text-muted: #666;
+  --color-border: #ddd;
+  --color-primary: #1a237e;
+  --color-primary-hover: #3949ab;
+  --color-link: #0066cc;
+  --color-filter-hover: #f2f3ff;
+  --color-filter-chip-bg: #ffffff;
+  --color-filter-select-active: #eef1ff;
+  --color-success-bg: #e8f5e9;
+  --color-success-text: #2e7d32;
+  --color-success-border: #a5d6a7;
+  --color-error-bg: #ffebee;
+  --color-error-text: #c62828;
+  --color-error-border: #ef9a9a;
+  --color-info-bg: #d1ecf1;
+  --color-info-text: #0c5460;
+  --color-info-border: #bee5eb;
+  --color-delete-btn: #c62828;
+  --color-delete-btn-hover: #ffebee;
+  --color-participants-border: #ccc;
+}
+
+body.dark-mode {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-alt: #252525;
+  --color-text: #e0e0e0;
+  --color-text-muted: #aaa;
+  --color-border: #444;
+  --color-primary: #5c6bc0;
+  --color-primary-hover: #7986cb;
+  --color-link: #64b5f6;
+  --color-filter-hover: #2a2a3e;
+  --color-filter-chip-bg: #2a2a2a;
+  --color-filter-select-active: #2a2d4a;
+  --color-success-bg: #1b3a1f;
+  --color-success-text: #81c784;
+  --color-success-border: #388e3c;
+  --color-error-bg: #3b1212;
+  --color-error-text: #ef9a9a;
+  --color-error-border: #c62828;
+  --color-info-bg: #0d2b30;
+  --color-info-text: #80cbc4;
+  --color-info-border: #00796b;
+  --color-delete-btn: #ef9a9a;
+  --color-delete-btn-hover: #3b1212;
+  --color-participants-border: #555;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,20 +62,41 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--color-text);
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
+  position: relative;
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
-  background-color: #1a237e;
+  background-color: var(--color-primary);
   color: white;
   border-radius: 5px;
+}
+
+#dark-mode-toggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 header h1 {
@@ -42,7 +117,7 @@ main {
 }
 
 section {
-  background-color: white;
+  background-color: var(--color-surface);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -53,8 +128,8 @@ section {
 section h3 {
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  color: #1a237e;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-primary);
 }
 
 .filters-container {
@@ -62,9 +137,9 @@ section h3 {
   gap: 12px;
   margin-bottom: 16px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--color-surface-alt);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -92,29 +167,31 @@ section h3 {
 }
 
 .filter-group:hover {
-  background-color: #f2f3ff;
+  background-color: var(--color-filter-hover);
 }
 
 .filter-group input,
 .filter-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 16px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filter-group input:focus,
 .filter-group select:focus {
-  border-color: #1a237e;
+  border-color: var(--color-primary);
   outline: none;
   box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.15);
 }
 
 .filter-select-active {
-  border-color: #1a237e !important;
-  background-color: #eef1ff;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-filter-select-active);
   font-weight: bold;
 }
 
@@ -149,13 +226,13 @@ section h3 {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--color-border);
   padding-top: 10px;
 }
 
 .filter-results {
   margin: 0;
-  color: #1a237e;
+  color: var(--color-primary);
   font-weight: bold;
 }
 
@@ -170,23 +247,23 @@ section h3 {
   align-items: center;
   padding: 4px 8px;
   border-radius: 999px;
-  border: 1px solid #1a237e;
-  background-color: white;
-  color: #1a237e;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-filter-chip-bg);
+  color: var(--color-primary);
   font-size: 14px;
 }
 
 .no-results {
   font-style: italic;
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 .activity-card {
   margin-bottom: 15px;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--color-surface-alt);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -197,7 +274,7 @@ section h3 {
 
 .activity-card h4 {
   margin-bottom: 10px;
-  color: #0066cc;
+  color: var(--color-link);
 }
 
 .activity-card p {
@@ -208,12 +285,12 @@ section h3 {
 .participants-container {
   margin-top: 15px;
   padding-top: 12px;
-  border-top: 1px dashed #ccc;
+  border-top: 1px dashed var(--color-participants-border);
 }
 
 .participants-section h5 {
   margin-bottom: 8px;
-  color: #1a237e;
+  color: var(--color-primary);
   font-size: 16px;
 }
 
@@ -243,7 +320,7 @@ section h3 {
 .delete-btn {
   background: none;
   border: none;
-  color: #c62828;
+  color: var(--color-delete-btn);
   cursor: pointer;
   font-size: 14px;
   padding: 2px 5px;
@@ -252,11 +329,11 @@ section h3 {
 }
 
 .delete-btn:hover {
-  background-color: #ffebee;
+  background-color: var(--color-delete-btn-hover);
 }
 
 .participants-section p {
-  color: #777;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
@@ -274,13 +351,15 @@ section h3 {
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 16px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 button {
-  background-color: #1a237e;
+  background-color: var(--color-primary);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -291,7 +370,7 @@ button {
 }
 
 button:hover {
-  background-color: #3949ab;
+  background-color: var(--color-primary-hover);
 }
 
 .message {
@@ -301,21 +380,21 @@ button:hover {
 }
 
 .success {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #a5d6a7;
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border: 1px solid var(--color-success-border);
 }
 
 .error {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #ef9a9a;
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error-border);
 }
 
 .info {
-  background-color: #d1ecf1;
-  color: #0c5460;
-  border: 1px solid #bee5eb;
+  background-color: var(--color-info-bg);
+  color: var(--color-info-text);
+  border: 1px solid var(--color-info-border);
 }
 
 .hidden {
@@ -326,5 +405,5 @@ footer {
   text-align: center;
   margin-top: 30px;
   padding: 20px;
-  color: #666;
+  color: var(--color-text-muted);
 }
