@@ -9,6 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearFiltersButton = document.getElementById("clear-filters");
   const filterResults = document.getElementById("filter-results");
   const activeFiltersContainer = document.getElementById("active-filters");
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+  // Dark mode initialization
+  function applyDarkMode(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+    darkModeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+  }
+
+  const savedDarkMode = localStorage.getItem("darkMode") === "true";
+  applyDarkMode(savedDarkMode);
+
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = !document.body.classList.contains("dark-mode");
+    applyDarkMode(isDark);
+    localStorage.setItem("darkMode", isDark);
+  });
 
   const dayOrder = [
     "Monday",
