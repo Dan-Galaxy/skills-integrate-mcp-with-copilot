@@ -15,6 +15,31 @@
     <main>
       <section id="activities-container">
         <h3>Available Activities</h3>
+        <div id="filters" class="filters-container">
+          <div class="filter-group">
+            <label for="filter-activity">Filter by activity</label>
+            <select id="filter-activity">
+              <option value="all">All activities</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-day">Filter by day</label>
+            <select id="filter-day">
+              <option value="all">All days</option>
+            </select>
+          </div>
+          <div class="filter-group checkbox-group">
+            <label for="filter-open-only">
+              <input type="checkbox" id="filter-open-only" />
+              Open spots only
+            </label>
+          </div>
+          <button type="button" id="clear-filters">Clear Filters</button>
+          <div class="filters-feedback" aria-live="polite">
+            <p id="filter-results" class="filter-results">Showing activities</p>
+            <div id="active-filters" class="active-filters"></div>
+          </div>
+        </div>
         <div id="activities-list">
           <!-- Activities will be loaded here -->
           <p>Loading activities...</p>

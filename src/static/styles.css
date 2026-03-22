@@ -57,12 +57,142 @@ section h3 {
   color: #1a237e;
 }
 
+.filters-container {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filters-container:hover {
+  border-color: #b0b5ff;
+  box-shadow: 0 4px 12px rgba(26, 35, 126, 0.08);
+}
+
+@media (min-width: 768px) {
+  .filters-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.filter-group {
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.filter-group:hover {
+  background-color: #f2f3ff;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #1a237e;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.15);
+}
+
+.filter-select-active {
+  border-color: #1a237e !important;
+  background-color: #eef1ff;
+  font-weight: bold;
+}
+
+.checkbox-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.checkbox-group input {
+  width: auto;
+  padding: 0;
+}
+
+#clear-filters {
+  justify-self: start;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+#clear-filters:disabled {
+  background-color: #777;
+  cursor: not-allowed;
+}
+
+#clear-filters:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.filters-feedback {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.filter-results {
+  margin: 0;
+  color: #1a237e;
+  font-weight: bold;
+}
+
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #1a237e;
+  background-color: white;
+  color: #1a237e;
+  font-size: 14px;
+}
+
+.no-results {
+  font-style: italic;
+  color: #666;
+}
+
 .activity-card {
   margin-bottom: 15px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .activity-card h4 {
